@@ -1,0 +1,30 @@
+---
+name: pi485
+version: dev
+slug: hyunjins
+description: LG HVAC
+url: https://github.com/Hyunjinss/PI485
+codenotary: yiijin@gmail.com
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+options:
+  log_level: info
+  mqtt_addr: mqtt://192.168.1.10
+  mqtt_id: mqtt
+  mqtt_pw: mqtt
+  ew11_ip: 192.168.1.3
+  ew11_port: 8899
+  ew11_queue_interval: 300
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)
+  mqtt_addr: str
+  mqtt_id: str
+  mqtt_pw: str
+  ew11_ip: str
+  ew11_port: str
+  ew11_queue_interval: int(100,1000)
