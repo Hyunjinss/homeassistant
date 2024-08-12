@@ -6,11 +6,15 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apk add --no-cache \
     npm \
-    nodejs 
+    nodejs \
+    $BUILD_FROM
 
-COPY package.json /
-COPY *.js /
-COPY run.sh /
-RUN chmod a+x /run.sh
+WORKDIR /usr/app
 
-CMD [ "/run.sh" ]
+COPY run.sh /usr/app/run.sh
+COPY rootfs/*.js /usr/app/
+COPY rootfs/package.json /usr/app/package.json
+
+RUN chmod a+x /usr/app/run.sh
+
+CMD [ "/usr/app/run.sh" ]

@@ -1,0 +1,8 @@
+---
+configuration:
+  ew11:
+    name: EW11
+    description: EW11 IP와 Port 정보를 입력해주세요.
+  mqtt:
+    name: MQTT
+    description: MQTT 정보를 입력해주세요.

@@ -16,7 +16,6 @@ var log = (...args) => console.log('[' + new Date().toLocaleString('ko-KR', {tim
 //////////////////////////////////////////////////////////////////////////////////////
 // MQTT-Broker 연결
 //////////////////////////////////////////////////////////////////////////////////////
-
 const client  = mqtt.connect(constant.mqttBroker,
     {clientId: constant.clientID,
          username: constant.mqttUser,
@@ -130,6 +129,7 @@ function receive(strFrame){
         util.sensorConfigPublish(client, deviceId, "pipe2Temp", "파이프2 온도", "temperature", "°C");
         util.sensorConfigPublish(client, deviceId, "targetTemp", "설정 온도", "temperature", "°C");
         util.sensorConfigPublish(client, deviceId, "outsideTemp", "실외기 온도", "temperature", "°C");
+        util.sensorConfigPublish(client, deviceId, "mode", "모드", null, null);
 
         // MQTT climate Config 등록.
         util.climateConfigPublish(client, deviceId);
@@ -173,11 +173,8 @@ client.on('message', (topic, message) => {
     let deviceId = util.getIdxFromDeviceId(AIRCON_LIST, topicDeviceIdx);
     AIRCON_LIST[deviceId][command] = strMessage;
 
-    log('received ' + strMessage)
-    log("AIRCON_LIST[deviceId][command] : " + AIRCON_LIST[deviceId][command]);
     // send TCP message
     sendQueue.push({type:'command', hex: AIRCON_LIST[deviceId].packet});
-    log(">>>" + AIRCON_LIST[deviceId].packet);
 
 });
 

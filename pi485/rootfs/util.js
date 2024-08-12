@@ -75,16 +75,14 @@ function climateConfigPublish(client, deviceId){
             "object_id":                        "hvac_ac"+deviceId,
             "availability": 			[{"topic": "zigbee2mqtt2/bridge/state","value_template": "{{ value_json.state }}"}],
 
-            "power_command_topic" :climateTopic+"/status",
-            "power_topic":    sensorTopic+"/state",
-            "power_template":    "{{ value_json.status }}",
+            "power_command_topic" :climateTopic+"/mode",
             "payload_on" : "on",
             "payload_off" : "off",
 
 
             "temperature_command_topic" : climateTopic+"/targetTemp",
-            "temperature_topic":    sensorTopic+"/state",
-            "temperature_template":    "{{ value_json.targetTemp }}",
+            "temperature_state_topic":    sensorTopic+"/state",
+            "temperature_state_template":    "{{ value_json.targetTemp }}",
 
             "current_temperature_topic":    sensorTopic+"/state",
             "current_temperature_template":    "{{ value_json.currentTemp }}",
