@@ -3,7 +3,7 @@ name: pi485
 version: dev1.5.0.0
 slug: hyunjins
 description: LG HVAC
-url: https://github.com/Hyunjinss/PI485
+url: https://github.com/Hyunjinss/homeassistant/tree/main/pi485
 codenotary: yiijin@gmail.com
 init: false
 arch:
